@@ -1,0 +1,56 @@
+class ArrayQueue {
+  int[] arr;
+  int start;
+  int end;
+  int maxsize;
+  int cursize;
+    public ArrayQueue() {
+        maxsize=10;
+        arr=new int[maxsize];
+        start=-1;
+        end=-1;
+        cursize=0;
+       
+    }
+
+    public void push(int x) {
+       if(cursize==maxsize){
+        System.out.println("size is full");
+       }
+       if(cursize==0){
+        start=0;
+        end=0;
+       }else{
+        end=(end+1)%maxsize;
+
+       }
+       arr[end]=x;
+       cursize++;
+    }
+
+    public int pop() {
+       if(cursize==0){
+        return -1;
+       }
+       int poped=arr[start];
+       if(cursize==1){
+        start=-1;
+        end=-1;
+       }else{
+        start=(start+1)%maxsize;
+       }
+       cursize--;
+       return poped;
+    }
+
+    public int peek() {
+         if(cursize==0){
+        return 0;
+       }
+       return arr[start];
+    }
+
+    public boolean isEmpty() {
+      return (cursize==0);
+    }
+}

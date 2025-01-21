@@ -1,0 +1,48 @@
+class Node{
+    int val;
+    Node next;
+    Node(int val){
+        this.val=val;
+        this.next=next;
+    }
+}
+class LinkedListStack {
+    Node top;
+    int size;
+    public LinkedListStack() {
+        Node top=null;
+        size=0;
+    }
+
+    public void push(int x) {
+       Node temp=new Node(x);
+       temp.next=top;
+       top=temp;
+       size++;
+
+    }
+
+    public int pop() {
+       if(size==0){
+        return -1;
+       }
+       int res=top.val;
+       top=top.next;
+       size--;
+       return res;
+    }
+
+    public int top() {
+        if(size==0){
+            return -1;
+        }
+        return top.val;
+    }
+
+    public boolean isEmpty() {
+        if(size==0){
+            return true;
+        }
+        return false;
+    }
+}

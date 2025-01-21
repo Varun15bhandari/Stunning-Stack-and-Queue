@@ -1,0 +1,54 @@
+class Node{
+    int val;
+    Node next;
+    Node(int val){
+        this.val=val;
+        this.next=null;
+    }
+}
+class LinkedListQueue {
+    int size;
+    Node end;
+    Node start;
+    public LinkedListQueue() {
+        size=0;
+        end=null;
+        start=null;
+
+    }
+
+    public void push(int x) {
+       Node temp=new Node(x);
+       if(start==null){
+        start=temp;
+        end=temp;
+       }else{
+        end.next=temp;
+        end=temp;
+       }
+       size++;
+    }
+
+    public int pop() {
+       if(size==0){
+        return -1;
+       }
+       int value=start.val;
+       Node temp=start;
+       start=start.next;
+       temp=null;
+       size--;
+       return value;
+    }
+
+    public int peek() {
+        if(size==0){
+        return -1;
+       }
+       return start.val;
+    }
+
+    public boolean isEmpty() {
+        return (size==0);
+    }
+}

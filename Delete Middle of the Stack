@@ -1,0 +1,26 @@
+class Rextester 
+{
+   
+    // Deletes middle of stack of size n. Curr is current
+    // item number
+    static void deleteMid(Stack<Character> st)
+    {
+        int n = st.size();
+        Stack<Character> tempSt = new Stack();
+        int count = 0;
+        // put first n/2 element of st in tempSt
+        while (count < n / 2) {
+            char c = st.peek();
+            st.pop();
+            tempSt.push(c);
+            count++;
+        }
+        // delete middle element
+        st.pop();
+        // put all (n/2) element of tempSt in st
+        while (!tempSt.empty()) {
+            st.push(tempSt.peek());
+            tempSt.pop();
+        }
+    }
+ 

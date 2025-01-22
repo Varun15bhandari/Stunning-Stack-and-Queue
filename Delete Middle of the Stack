@@ -23,4 +23,30 @@ class Rextester
             tempSt.pop();
         }
     }
- 
+
+
+# Brute and easy approach  
+
+import java.util.*; 
+import java.io.*;
+
+public class Solution {
+    public static void deleteMiddle(Stack<Integer> st, int N) {
+        // Use a Vector to temporarily store the elements
+        Vector<Integer> v = new Vector<>();
+        
+        // Pop all elements from the stack and add them to the vector
+        for (int i = 0; i < N; i++) {
+            v.add(st.pop());
+        }
+        
+        // Determine the index of the middle element
+        int target = (N % 2 == 0) ? (N / 2 - 1) : (N / 2);
+        
+        // Push elements back into the stack in the correct order, skipping the middle
+        for (int i = N - 1; i >= 0; i--) {
+            if (i == target) continue; // Skip the middle element
+            st.push(v.get(i));
+        }
+    }
+}
